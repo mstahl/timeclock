@@ -10,3 +10,9 @@ Dir["#{File.dirname(__FILE__)}/support/**/*.rb"].each {|f| require f}
 RSpec.configure do |config|
   
 end
+
+EXAMPLE_PROJECT_PATH = File.join(File.dirname(__FILE__), "example_project")
+
+def path(filename)
+  File.join(EXAMPLE_PROJECT_PATH, filename)
+end
