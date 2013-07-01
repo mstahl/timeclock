@@ -20,15 +20,15 @@ for the day,
     clock out [project name]
 
 This will log the time between when you clocked in and now in the YAML file, and
-save it as a timesheet entry. If a project name is given, the hours are logged 
-to that project's hours in the timesheet. 
+save it as a timesheet entry. If a project name is given, the hours are logged
+to that project's hours in the timesheet.
 
 To see your timesheet,
 
     timesheet [project name] [project name] ...
 
-Specify as many project names as you want and it will show itemized hourly 
-timesheets with these projects. 
+Specify as many project names as you want and it will show itemized hourly
+timesheets with these projects.
 
 ## Options
 
@@ -37,17 +37,21 @@ For `clock`:
   -t [timesheet]  : Use the filename as a timesheet
 
 ## Contributing to timeclock
- 
-* Check out the latest master to make sure the feature hasn't been implemented or the bug hasn't been fixed yet
-* Check out the issue tracker to make sure someone already hasn't requested it and/or contributed it
-* Fork the project
-* Start a feature/bugfix branch
-* Commit and push until you are happy with your contribution
-* Make sure to add tests for it. This is important so I don't break it in a future version unintentionally.
-* Please try not to mess with the Rakefile, version, or history. If you want to have your own version, or is otherwise necessary, that is fine, but please isolate to its own commit so I can cherry-pick around it.
+
+  * Check out the latest master to make sure the feature hasn't been
+    implemented or the bug hasn't been fixed yet
+  * Check out the issue tracker to make sure someone already hasn't requested
+    it and/or contributed it
+  * Fork the project
+  * Start a feature/bugfix branch
+  * Commit and push until you are happy with your contribution
+  * Make sure to add tests for it. This is important so I don't break it in a
+    future version unintentionally.
+  * Please try not to mess with the Rakefile, version, or history. If you want
+    to have your own version, or is otherwise necessary, that is fine, but
+    please isolate to its own commit so I can cherry-pick around it.
 
 ## Copyright
 
 Copyright (c) 2012 max thom stahl. See LICENSE.txt for
 further details.
-
