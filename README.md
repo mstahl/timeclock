@@ -8,33 +8,40 @@ Use timeclock to keep track of your hours working on different things.
 
 To start working on a project,
 
-    clock in [project name]
+    clock in
 
 This will create a `.timesheet` file in the current directory if it doesn't
 already exist. This file is a YAML file containing all the hours worked on that
-project. If a project name is specified, the hours you log will be added
-specifically to that project. You can have as many "projects" living in one
-directory as you want (think of these as tasks you're working on). To finish
-for the day,
+project. (You may wish to add '.timesheet' to your `.gitignore` file.) If a
+project name is specified, the hours you log will be added specifically to that
+project. You can have as many "projects" living in one directory as you want
+(think of these as tasks you're working on). To finish for the day,
 
-    clock out [project name]
+    clock out
 
 This will log the time between when you clocked in and now in the YAML file, and
-save it as a timesheet entry. If a project name is given, the hours are logged
-to that project's hours in the timesheet.
+save it as a timesheet entry. For detailed usage information, run `clock` with
+no arguments.
 
-To see your timesheet,
+To see your timesheet output to the terminal,
 
-    timesheet [project name] [project name] ...
+    timesheet
 
-Specify as many project names as you want and it will show itemized hourly
-timesheets with these projects.
+## Command-Line Options
 
-## Options
-
-For `clock`:
+For `clock` and `timesheet`:
 
   -t [timesheet]  : Use the filename as a timesheet
+
+## TODO
+
+This is my to-do list of features I want to write in Timeclock. It is not meant
+to be exhaustive.
+
+  * Support for multiple timesheet formatters: HTML, PDF, Excel, etc.
+  * API integration with Google Drive, Harvest, etc.
+  * Tons more options for `timesheet` command
+  * User-level configuration via .timeclock file in home directory
 
 ## Contributing to timeclock
 
