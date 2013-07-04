@@ -1,15 +1,38 @@
-#!/usr/bin/env ruby -wKU
+#!`which ruby`
 
 require 'getopt/std'
 require 'pp'
 
-pp ARGV
+require File.join(File.dirname(__FILE__), '..', 'lib', 'timeclock.rb')
+
+### Constants -----------------------------------------------------------------
+
+USAGE = %{Usage: clock (in|out) [-t timesheet_file]}
+
+### Options -------------------------------------------------------------------
 
 @opts = {
   "-t" => ".timesheet"
-}.Getopt::Std.getopts("t:")
-
-pp ARGV
+}.merge(Getopt::Std.getopts("t:"))
 
 @cmd = ARGV.shift
 
+### Load timesheet ------------------------------------------------------------
+
+@timesheet = Timeclock::Timesheet.new
+
+begin
+  case @cmd and @cmd.downcase
+  when 'in'
+    @timesheet.clock_in
+  when 'out'
+    @timesheet.clock_out
+  else
+    puts USAGE
+    exit
+  end
+rescue Exception => e
+  puts "!!! => Some kind of error occurred: '#{e}'"
+end
+
+# vim: set ft=ruby:

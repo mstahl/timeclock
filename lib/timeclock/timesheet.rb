@@ -1,17 +1,21 @@
+require 'yaml'
+require 'yaml/store'
+
 module Timeclock
   class Timesheet
 
     ### Accessors ===============================================================
 
-    attr_accessor :name   # Name of this project
-    attr_accessor :client # Name of the client who commissioned this project
     attr_reader   :hours  # List of clock ins/outs for this project, in order
 
     ### Constructor  ============================================================
 
-    def initialize(args = {})
-      args.each do |k, v|
-        self.send("#{k}=", v) if self.respond_to?(k)
+    def initialize
+      # TODO: Move persistence-related logic out to Timeclock::Persistence
+      @store = YAML::Store.new '.timesheet'
+      @store.transaction do
+        @store[:hours]  ||= []
+        @hours = @store[:hours]
       end
     end
 
@@ -23,6 +27,9 @@ module Timeclock
       @hours.push({
         in: Time.now
       })
+
+      # TODO: Move persistence-related logic out to Timeclock::Persistence
+      persist
     end
 
     def clock_out(args = {})
@@ -31,6 +38,17 @@ module Timeclock
       end
       @hours.last[:out] = Time.now
       @hours.last[:note] = args[:note] unless args[:note].nil?
+
+      # TODO: Move persistence-related logic out to Timeclock::Persistence
+      persist
+    end
+
+    private
+
+    def persist
+      @store.transaction do
+        @store[:hours]  = @hours
+      end
     end
 
   end
